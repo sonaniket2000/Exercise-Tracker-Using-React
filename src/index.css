@@ -1,0 +1,90 @@
+*{
+color: white;
+background-color: rgb(153, 89, 212);
+}
+
+.Main{
+    text-align: center;
+}
+
+.AboveAll{
+    display: inline-block;
+    padding: 2vw;
+}   
+
+.AboveContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.Container{
+    display: grid;
+    width: 27vw;
+    height:18vw;
+    
+    border:1px solid black;
+    background-color: rgb(214, 181, 245);
+    grid-template-columns:18vw 9vw;
+    grid-template-rows: repeat(3,6vw);
+    justify-content: center;
+    align-content: center;
+    margin: 1vw 1vw 1vw 1vw;
+}
+
+.CreateTask{
+ margin: 1vw 1vw 1vw 1vw;
+}
+
+.Home{
+    margin: 1vw 1vw 1vw 1vw;
+}
+
+.ViewAll{
+    margin: 1vw 1vw 1vw 1vw;
+}
+
+.Completed{
+    margin: 1vw 1vw 1vw 1vw;
+}
+
+.Pending{
+    margin: 1vw 1vw 1vw 1vw;
+}
+
+.Title{
+    background-color: #D6B5F5;
+    color: black;
+    display: grid;
+    grid-column: 1/2;
+    align-self: center;
+    justify-self: center;
+}
+
+.Description{
+    background-color: #D6B5F5;
+    color: black;
+    display: grid;
+    grid-column:1/2;
+    grid-row: 2/5;
+    align-self: center;
+    justify-self: center;
+}
+
+.btnDelete,.btnEdit,.btnToggle{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+    grid-column: 2/3;
+    height: 3vw;
+    width: 7vw;
+}
+
+.inputTitle{
+    margin: 1vw 1vw 1vw 5vw;
+}
+
+.inputDescription{
+    margin: 1vw 1vw 1vw 1vw;
+}
