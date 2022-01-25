@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Exercise-Tracker-Using-React/static/css/main.122644d6.css",
+    "main.js": "/Exercise-Tracker-Using-React/static/js/main.69065b3e.js",
+    "index.html": "/Exercise-Tracker-Using-React/index.html",
+    "main.122644d6.css.map": "/Exercise-Tracker-Using-React/static/css/main.122644d6.css.map",
+    "main.69065b3e.js.map": "/Exercise-Tracker-Using-React/static/js/main.69065b3e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.122644d6.css",
+    "static/js/main.69065b3e.js"
+  ]
+}
