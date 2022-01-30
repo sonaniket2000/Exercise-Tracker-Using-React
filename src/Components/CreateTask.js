@@ -32,28 +32,18 @@ class CreateTask extends React.Component{
             description:this.state.Description,
             toggle:false
            });
-     }else if(this.props.value === "Update"){
-        newData = newData.filter(data => data.key !== this.props.keyEdit).map(data => (
-            {
-                key:data.key,
-                title:data.title,
-                description:data.description,
-                toggle:data.toggle
-            }
-        ));
-        this.props.handleClick(newData);
-
-        newData.push({
-            key:this.props.keyEdit,
-            title:this.state.Title,
-            description:this.state.Description,
-            toggle:false
-           });
-     }
+      }
 
        this.props.handleClick(newData);
        this.props.handleSetCureentStatus("Home");
        event.preventDefault();
+    }
+
+    handleReset(){
+        this.setState({
+            Title:'',
+            Description:''
+        });
     }
 
     render(){
@@ -71,7 +61,8 @@ class CreateTask extends React.Component{
                 <input type = "text" className="inputDescription"value={this.state.Description} onChange = {this.handleChange} name = "Description" />
             </label>
             <br/>
-                <input type="submit" value={this.props.value}/>
+                <input type="submit" className = "ResetBtn" value={this.props.value}/>
+                <button type="reset" onClick={() => this.handleReset()} className = "ResetBtn">Cancel</button>
             </form>
             </>
         );
