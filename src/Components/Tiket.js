@@ -82,20 +82,31 @@ class Tiket extends React.Component{
         let btn1= this.props.btn1;
         let btn2 = this.props.btn2;
         let data;
+        var btnAll = {background:""};
+
+        if(this.props.currentStatus !== "Open"){
+            var completed = {background:"rgb(	89, 255, 160,0.4)"};
+            var pending = {background:"rgb( 255, 237, 101,0.4)"}
+        }else{
+            var completed = {background:"rgb(	89, 255, 160,0.2)",color:"rgb(0,0,0,0.4)",border:"0.5px solid rgb(0,0,0,0.4)",boxShadow:"0.5px 0.5px rgb(0,0,0,3)"};
+            var pending = {background:"rgb( 255, 237, 101,0.2)",color:"rgb(0,0,0,0.4)",border:"0.5px solid rgb(0,0,0,0.4)",boxShadow:"0.5px 0.5px rgb(0,0,0,3)  "};
+           btnAll = {background:"rgb(240 ,248, 255, 0.2)",color:"rgb(0,0,0,0.6)",border:"1px solid rgb(0,0,0,0.2)"};
+        }
+
         
         console.log(this.props.editKey);
 
             data = this.props.data.filter(data => (data.toggle === btn1 || data.toggle === btn2)).map((data) =>
             <div className='AboveContainer'>
-            <div className='Container' key={data.key} style={!data.toggle?{background:"#FFE0B5"}:{background:"#DFBBB1"}}>
+            <div className='Container' key={data.key} style={data.toggle?completed:pending}>
                 {this.props.editKey !== data.key ? 
                 <>
                 <div className='Title'>{data.title}</div>
                 <h1 className='hrTiket'/>
                 <div className='Description'>{data.description}</div>
-                <button className='btnDelete'  onClick={() => this.handleDelete(data.key)}> Delete</button>
-                <button className='btnEdit' onClick={() => this.handleEdit(data)}>Edit</button>
-                <button className='btnToggle' onClick={() => this.handleToggle(data.key)}>{!data.toggle?"Completed":"Pending"}</button>
+                <button className='btnDelete' style = {btnAll} onClick={() => this.handleDelete(data.key)}> Delete</button>
+                <button className='btnEdit'  style = {btnAll} onClick={() => this.handleEdit(data)}>Edit</button>
+                <button className='btnToggle'  style = {btnAll} onClick={() => this.handleToggle(data.key)}>{!data.toggle?"Completed":"Pending"}</button>
                 </> : 
                 <>
                     <input type="text" value={this.state.Title} className='editTitle' onChange={(e) => this.handleChange(e)}/>

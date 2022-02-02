@@ -33,9 +33,19 @@ class App extends React.Component{
   }
 
   handleSetCureentStatus(val){
-    this.setState({
-      currentStatus:val
-    });
+    // if(val === "Home")
+    // {
+    //   this.setState({
+    //     currentStatus:val,
+    //     btnCompleted:true,
+    //     btnPending:false
+    //   });
+    // }else {
+      this.setState({
+        currentStatus:val
+      });
+    
+
   }
 
     CurrentPage(val){
@@ -97,25 +107,28 @@ class App extends React.Component{
     var open = {width:""};
     var body = {marginLeft:""};
 
+    // linear-gradient(to top, white, #b9b2eb)
+
     if(this.state.currentStatus === "Open") {
       open = {width:"20%"};
-      body = {marginLeft:"20%"};
-
+      body = {marginLeft:"20%",  background: "linear-gradient(to top, white, #c3bfe6)"};
+      home = {color:"rgb(0,0,255,0.3)"};
+      createTask = {color:"rgb(0,0,0,0.3)"};
     }
 
     if(this.state.currentStatus === "CreateNewTask") {
       createTask = {color:"blue",borderBottom:"1px solid blue"};
-    } else{
+    } else if(this.state.currentStatus === "Home"){
        home = {color:"blue",borderBottom:"1px solid blue"};
     }
 
 
     if(this.state.btnCompleted === true && this.state.btnPending === false)
-     temp1 = {color:"blue",border:"2px double  blue"};
+     temp1 = {color:"black"};
     else if(this.state.btnCompleted === true && this.state.btnPending === true)
-     temp2 = {color:"blue",border:"2px double  blue"};
+     temp2 = {color:"black"};
     else
-     temp3 = {color:"blue",border:"2px double  blue"};
+     temp3 = {color:"black"};
 
 
     return(
@@ -126,14 +139,14 @@ class App extends React.Component{
           <a href="#" style={temp2} onClick={() =>this.handleButton(4)}>Completed</a>
           <a href="#" style={temp3} onClick={() =>this.handleButton(5)}>Pending</a>
         </div>
-        {this.state.currentStatus === "Open" &&  <a href="#" className="closebtn" onClick={() => this.setState({currentStatus:"Home"})}>&times;</a>}
-        {this.state.currentStatus !== "Open" && <span style={{cursor:'pointer',padding:'1vw'}} onClick={() => this.setState({currentStatus:"Open"})} className='spanMain'>&#9776; Menu</span>}
+        {this.state.currentStatus === "Open" &&  <a href="#" className="closebtn" onClick={() => this.handleSetCureentStatus("Home")}>&times;</a>}
+        {this.state.currentStatus !== "Open" && <span style={{cursor:'pointer',padding:'0.5vw'}} onClick={() => this.setState({currentStatus:"Open"})} className='spanMain'>&#9776; Menu</span>}
     <div className='Main' style={body} >
     <div className='AboveAll'>
    
   
-      <button  className="Home" style = {home} onClick={() =>this.setState({currentStatus:"Home"})}><AiFillHome/>Home</button>
-      <button className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</button>
+      <a  href='#' className="Home" style = {home} onClick={() => this.handleSetCureentStatus("Home")}><AiFillHome/>Home</a>
+      <a  href='#' className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</a>
       <br />
       <div className='Content'>
       {/* {this.state.currentStatus ==="Home" || this.state.currentStatus === "Open" &&

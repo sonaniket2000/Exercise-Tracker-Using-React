@@ -5,6 +5,8 @@
 .App{
     /* background: linear-gradient(to top, white, rgba(236, 122, 56, 0.822)); */
     /* background: linear-gradient(to top, white, #BDC4DB); */
+    background: linear-gradient(to top, white, #b4adea);
+    /* background: linear-gradient(to top, white, #c3bfe6) */
   display: block;
 }
 
@@ -20,6 +22,7 @@
 }   
 
 .DekhateHai{
+    margin-top: 1vw;
     display: flex;      
     flex-wrap: wrap;
     justify-content: center;
@@ -60,11 +63,16 @@ grid-column: 1/-1;
     display: grid;
     width: 27vw;
     height:18vw;
-    
+    box-shadow: 2px 2px rgb(0,0,0,6);
     border:1px solid black;
+    transition: transform .5s;
     grid-template-rows: 3vw 4vw 7vw 3vw; 
     grid-template-columns: repeat(3,9vw);
     margin: 1vw 1vw 1vw 1vw;
+}
+
+.Container:hover{
+    transform: scale(1.05);
 }
 
 .hrTiket{
@@ -81,6 +89,7 @@ grid-column: 1/-1;
     grid-row-start: 4;
     display: inline-block;
     background-color:#F0F8FF;
+    /* background-color: rgb(180,173,234,0.7); */
     margin-top: 0.5vw;
     margin-right: 0.2vw;
     margin-left: 0.2vw;
@@ -124,20 +133,26 @@ grid-column: 1/-1;
 
 .Home{
     cursor:grab;
-    font-size: x-large;
+    text-shadow: 1px 1px rgb(0,0,0,0.5);
+    font-size: xx-large;
     margin-bottom: 1vw;
-    background-color: white;
+    text-decoration: none;
+    padding: 1vw;
+    /* background-color: white; */
     color: black;
-    border:0.1px solid white;
+    /* border:0.1px solid white; */
 }
 
 .CreateTask{
+    text-shadow: 1px 1px rgb(0,0,0,0.5);
     cursor:grab;
-    font-size: x-large;
-    margin-bottom: 1vw;
-    background-color: white;
+    font-size: xx-large;
+    /* margin-bottom: 1vw; */
+    padding: 1vw;
+    text-decoration: none;
+    /* background-color: white; */
     color: black;
-    border:0.1px solid white;
+    /* border:0.1px solid white; */
     border-left: 1px solid black;
 }
 
@@ -164,6 +179,7 @@ grid-column: 1/-1;
 }
 
 .HomeIcon{
+    box-shadow: 1px 1px rgb(0,0,0,0.5);     
  font-size: x-large;
  
 }
@@ -173,9 +189,9 @@ grid-column: 1/-1;
     width:0;
     position:fixed;
     z-index:1;
-    top:0;
+    top:1vw;
     left:0;
-    background-color: #111;
+    background-color: #50514f;
     overflow-x:hidden;
     transition: 0.5s;
     padding-top:60px;
