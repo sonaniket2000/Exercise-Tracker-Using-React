@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Exercise-Tracker-Using-React/static/css/main.30c70a07.css",
-    "main.js": "/Exercise-Tracker-Using-React/static/js/main.13f897c2.js",
+    "main.css": "/Exercise-Tracker-Using-React/static/css/main.9320b2f0.css",
+    "main.js": "/Exercise-Tracker-Using-React/static/js/main.098096fd.js",
     "index.html": "/Exercise-Tracker-Using-React/index.html",
-    "main.30c70a07.css.map": "/Exercise-Tracker-Using-React/static/css/main.30c70a07.css.map",
-    "main.13f897c2.js.map": "/Exercise-Tracker-Using-React/static/js/main.13f897c2.js.map"
+    "main.9320b2f0.css.map": "/Exercise-Tracker-Using-React/static/css/main.9320b2f0.css.map",
+    "main.098096fd.js.map": "/Exercise-Tracker-Using-React/static/js/main.098096fd.js.map"
   },
   "entrypoints": [
-    "static/css/main.30c70a07.css",
-    "static/js/main.13f897c2.js"
+    "static/css/main.9320b2f0.css",
+    "static/js/main.098096fd.js"
   ]
 }
