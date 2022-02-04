@@ -124,11 +124,11 @@ class App extends React.Component{
 
 
     if(this.state.btnCompleted === true && this.state.btnPending === false)
-     temp1 = {color:"black"};
+     temp1 = {color:"white"};
     else if(this.state.btnCompleted === true && this.state.btnPending === true)
-     temp2 = {color:"black"};
+     temp2 = {color:"white"};
     else
-     temp3 = {color:"black"};
+     temp3 = {color:"white"};
 
 
     return(
@@ -141,7 +141,8 @@ class App extends React.Component{
         </div>
         {this.state.currentStatus === "Open" &&  <a href="#" className="closebtn" onClick={() => this.handleSetCureentStatus("Home")}>&times;</a>}
         {this.state.currentStatus !== "Open" && <span style={{cursor:'pointer',padding:'0.5vw'}} onClick={() => this.setState({currentStatus:"Open"})} className='spanMain'>&#9776; Menu</span>}
-    <div className='Main' style={body} >
+{this.state.currentStatus !== "Open" ?
+ <div className='Main' style={body} >
     <div className='AboveAll'>
    
   
@@ -149,17 +150,22 @@ class App extends React.Component{
       <a  href='#' className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</a>
       <br />
       <div className='Content'>
-      {/* {this.state.currentStatus ==="Home" || this.state.currentStatus === "Open" &&
-      <>
-      <button className="ViewAll"  >View All</button> 
-      <button className="Completed" style={temp2} onClick={() =>this.handleButton(4)}>Completed</button>
-      <button className="Pending" style={temp3} onClick={() =>this.handleButton(5)}>Pending</button>
-      </> */}
-      
       {this.CurrentPage(this.state.currentStatus)}  
       </div>
     </div>
-    </div>
+    </div> :
+        <div className='Main' style={body} onClick={() => this.handleSetCureentStatus("Home")}>
+        <div className='AboveAll'>
+       
+      
+          <a  href='#' className="Home" style = {home} onClick={() => this.handleSetCureentStatus("Home")}><AiFillHome/>Home</a>
+          <a  href='#' className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</a>
+          <br />
+          <div className='Content'>   
+          {this.CurrentPage(this.state.currentStatus)}  
+          </div>
+        </div>
+        </div>}
     </div>
     );
   }
