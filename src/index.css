@@ -1,6 +1,8 @@
-/* *{
-
-} */
+*{
+margin-top: 0vw;
+margin-left: 0vw;
+margin-right: 0vw;
+}
 
 .App{
     /* background: linear-gradient(to top, white, rgba(236, 122, 56, 0.822)); */
@@ -14,11 +16,12 @@
     /* background-color: #F9EAE1; */
     /* display: fixed; */
     text-align: center;
-    transition: margin-left 0.5s
+    transition: margin-left 0.5s;
+
 }
 
 .AboveAll{
-    padding: 1vw;
+    padding: 0vw;
 }   
 
 .DekhateHai{
@@ -189,7 +192,7 @@ grid-column: 1/-1;
     width:0;
     position:fixed;
     z-index:1;
-    top:1vw;
+    top:0vw;
     left:0;
     background-color: #50514f;
     overflow-x:hidden;
@@ -228,3 +231,85 @@ grid-column: 1/-1;
     from {color:rgb(0,0,0,0.3);font-Size:10px;margin-left: 5%;}
     to {color:rgb(0,0,0,1);font-size: 36px;margin-left: 20%;}
 }
+
+/* menu lines */
+
+.menu-btn{
+    margin-left: 0%;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    /* display:contents; */
+    display:flow-root;
+}
+.menu-btn__burger {
+  display:fixed;
+  float: left;
+  margin-top: 2vw;
+  margin-left: 1vw;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before {
+  transform: translateY(-10px);
+}
+.menu-btn__burger::after {
+  transform: translateY(10px);
+}
+/* ANIMATION */
+.menu-btn-open .menu-btn__burger {
+  transform: translateX(-30px);
+  margin-left: 20%;
+  transition: all .3s ease-in-out;
+  /* transition: all 10s; */
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+.menu-btn-open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(20px, -20px);
+}
+.menu-btn-open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(20px, 20px);
+}
+
+/* .menu-btn-close{
+    margin-left: 0%;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    display:flow-root;
+} */
+
+.menu-btn-close .menu-btn__burger {
+
+    cursor: pointer;
+    transform: translateX(px);
+    margin-left: 1vw;
+    transition: all .5s ease-in-out;
+    background:white;
+    box-shadow:  0 2px 5px rgba(255,101,47,.2);
+  }
+  .menu-btn-close .menu-btn__burger::before {
+    transform: rotate(deg) translate(-0px, 20px);
+  }
+  .menu-btn-close .menu-btn__burger::after {
+    transform: rotate(deg) translate(-0px, -20px);
+  }

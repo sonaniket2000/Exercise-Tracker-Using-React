@@ -1,13 +1,14 @@
 import React from 'react'
-
+import { Navigate } from "react-router-dom" 
 
 class CreateTask extends React.Component{
     constructor(props){
         super(props);
-
+        
         this.state = {
             Title:this.props.Title,
-            Description:this.props.Description
+            Description:this.props.Description,
+            currentStatus:this.props.currentStatus
         }
 
         this.handleSubmit=this.handleSubmit.bind(this);
@@ -35,7 +36,9 @@ class CreateTask extends React.Component{
       }
 
        this.props.handleClick(newData);
-       this.props.handleSetCureentStatus("Home");
+        this.setState({
+            currentStatus:"Home"
+        });
        event.preventDefault();
     }
 
@@ -49,6 +52,7 @@ class CreateTask extends React.Component{
     render(){
         return(
             <>
+            {this.state.currentStatus && <Navigate to='/Home'/>}
             <br /><br /><br /><br />
             <form onSubmit={this.handleSubmit}>
             <label>

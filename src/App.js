@@ -1,15 +1,14 @@
 import React from 'react'
-import Tiket from './Components/Tiket'
-import CreateTask  from './Components/CreateTask';
-import { AiFillHome } from "react-icons/ai";
-
-var editKey,editTitle;
+import Home from './Components/Home'
+import {Routes,Route,Navigate,BrowserRouter} from 'react-router-dom';
 
 class App extends React.Component{
-  constructor(props){
-    super(props);    
-        this.state = {
-      count : [
+
+  constructor(){
+    super();
+
+    this.state = {
+      data : [
         {
           key:1,
           title:'Push-ups',
@@ -23,150 +22,31 @@ class App extends React.Component{
           toggle:true
         }
       ],
-      btnCompleted:true,
-      btnPending:false,
-      currentStatus:'Home'
     };
+
     this.handleClick = this.handleClick.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleSetCureentStatus = this.handleSetCureentStatus.bind(this);
-  }
-
-  handleSetCureentStatus(val){
-    // if(val === "Home")
-    // {
-    //   this.setState({
-    //     currentStatus:val,
-    //     btnCompleted:true,
-    //     btnPending:false
-    //   });
-    // }else {
-      this.setState({
-        currentStatus:val
-      });
-    
-
-  }
-
-    CurrentPage(val){
-    switch(val){
-      case "Open":
-      case "Home" :         return <Tiket data = {this.state.count} btn1= {this.state.btnCompleted} btn2 = {this.state.btnPending}  handleClick={this.handleClick} handleUpdate={this.handleUpdate} currentStatus = {this.state.currentStatus}/>;
-      case "CreateNewTask": return <CreateTask data = {this.state.count} Title='' Description=''  handleClick = {this.handleClick}  value="Submit" handleSetCureentStatus={this.handleSetCureentStatus} />;
-      case "Update" :       return <Tiket data = {this.state.count} btn1= {this.state.btnCompleted} btn2 = {this.state.btnPending}  handleClick={this.handleClick} currentStatus = {this.state.currentStatus} editKey = {editKey} editTitle = {editTitle} handleSetCureentStatus={this.handleSetCureentStatus}/>
-      // case "Update": return <CreateTask data = {this.state.count} keyEdit={edit.key} Title={edit.title} Description={edit.description}  handleClick = {this.handleClick}  value="Update" handleSetCureentStatus={this.handleSetCureentStatus}/>
-      default:return 
-    }
-  }
-
-  handleUpdate(editData){
-    
-    editKey=editData.key;            // how can we take whole object here?? ... convert it then use it here...bcox we have to send key and title seprately due to this
-    editTitle = editData.title;
-    console.log("edit" + editTitle);
-    this.setState({
-      currentStatus:"Update"
-    });
-  }
-
-  handleButton(val){
-   if(val === 3){
-      this.setState({
-        btnCompleted:true,
-        btnPending:false
-      });
-    }
-    else if(val === 4){
-      this.setState({
-        btnCompleted:true,
-        btnPending:true
-      });
-    }else if(val === 5){
-      this.setState({
-        btnCompleted:false,
-        btnPending:false
-      });
-    }
   }
 
   handleClick(val){
   
     this.setState({
-      count:val
+      data:val
     });
   }
+  
 
   render(){
-    var temp1 = {background:""}
-    var temp2 = {background:""};
-    var temp3 = {background:""};
-
-    var home = {color:"",borderBottom:""};
-    var createTask = {color:"",borderBottom:""};
-
-    var open = {width:""};
-    var body = {marginLeft:""};
-
-    // linear-gradient(to top, white, #b9b2eb)
-
-    if(this.state.currentStatus === "Open") {
-      open = {width:"20%"};
-      body = {marginLeft:"20%",  background: "linear-gradient(to top, white, #c3bfe6)"};
-      home = {color:"rgb(0,0,255,0.3)"};
-      createTask = {color:"rgb(0,0,0,0.3)"};
-    }
-
-    if(this.state.currentStatus === "CreateNewTask") {
-      createTask = {color:"blue",borderBottom:"1px solid blue"};
-    } else if(this.state.currentStatus === "Home"){
-       home = {color:"blue",borderBottom:"1px solid blue"};
-    }
-
-
-    if(this.state.btnCompleted === true && this.state.btnPending === false)
-     temp1 = {color:"white"};
-    else if(this.state.btnCompleted === true && this.state.btnPending === true)
-     temp2 = {color:"white"};
-    else
-     temp3 = {color:"white"};
-
-
     return(
-      <div className='App'>
-        <div className='sidenav' style={open}>
-         
-          <a href="#" style={temp1} onClick={() =>this.handleButton(3)}>View All</a>
-          <a href="#" style={temp2} onClick={() =>this.handleButton(4)}>Completed</a>
-          <a href="#" style={temp3} onClick={() =>this.handleButton(5)}>Pending</a>
-        </div>
-        {this.state.currentStatus === "Open" &&  <a href="#" className="closebtn" onClick={() => this.handleSetCureentStatus("Home")}>&times;</a>}
-        {this.state.currentStatus !== "Open" && <span style={{cursor:'pointer',padding:'0.5vw'}} onClick={() => this.setState({currentStatus:"Open"})} className='spanMain'>&#9776; Menu</span>}
-{this.state.currentStatus !== "Open" ?
- <div className='Main' style={body} >
-    <div className='AboveAll'>
-   
-  
-      <a  href='#' className="Home" style = {home} onClick={() => this.handleSetCureentStatus("Home")}><AiFillHome/>Home</a>
-      <a  href='#' className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</a>
-      <br />
-      <div className='Content'>
-      {this.CurrentPage(this.state.currentStatus)}  
-      </div>
-    </div>
-    </div> :
-        <div className='Main' style={body} onClick={() => this.handleSetCureentStatus("Home")}>
-        <div className='AboveAll'>
-       
+      <BrowserRouter>
+      <Routes>
       
-          <a  href='#' className="Home" style = {home} onClick={() => this.handleSetCureentStatus("Home")}><AiFillHome/>Home</a>
-          <a  href='#' className="CreateTask" style = {createTask} onClick={() =>this.setState({currentStatus:"CreateNewTask"})}>Create New Task</a>
-          <br />
-          <div className='Content'>   
-          {this.CurrentPage(this.state.currentStatus)}  
-          </div>
-        </div>
-        </div>}
-    </div>
+         <Route exact path="/CreateTask" element={<Home data = {this.state.data} handleClick = {this.handleClick} currentStatus="CreateNewTask"/>} />
+         <Route exact path = "/Home/Completed"  element={<Home data = {this.state.data} handleClick = {this.handleClick}  btnCompleted = {true}  btnPending={true} currentStatus="Home"/>} />
+         <Route exact path = "/Home/Pending"  element={<Home data = {this.state.data} handleClick = {this.handleClick}  btnCompleted = {false}  btnPending={false} currentStatus="Home"/>} />
+         <Route exact path="/Home" element={<Home data = {this.state.data} handleClick = {this.handleClick}  btnCompleted = {true}  btnPending={false} currentStatus="Home"/>}/>
+         <Route path='/' element={<Navigate to="/Home" />}/>
+         </Routes>
+     </BrowserRouter>
     );
   }
 }
